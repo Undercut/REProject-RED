@@ -1,0 +1,49 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="container">
+  <!--商品轮播图-->
+   <view class="swiper-container">
+
+       <image src="{{imagePath}}/{{good.imUrl}}" class="slide-image" width="355" height="150" mode="aspectFit" lazy-load="true"/>
+   </view>
+   <!--商品基本介绍-->
+   <view class="goods-info">
+        <view class="goods-title">{{good.title}}</view>
+        <view class="goods-price" style="padding-left:35rpx;">¥ {{good.present_price}}</view>
+        <view class="goods-info-fx">
+          <image src='/images/qd.png' />
+          <button open-type="share">分享</button>
+          <text>分享有赏</text>
+        </view>
+   </view>
+    <view class="goods-des-info">
+        <view class="label-title">商品介绍</view>
+        <view class="goods-text">
+            {{good.description}}
+         </view>
+    </view>
+
+    <!--用户评价-->
+    <view class="goods-des-info" style="margin-top:35rpx;" wx:if="{{commentList}}">
+        <view class="label-title" style="border-bottom:1px solid #eee;">大家评价<text style="color:red">（{{commentCount}}）</text></view>
+        <view class="goods-text" style="margin-top:15rpx;border-bottom:1px solid #eee;" wx:for="{{commentList}}">
+          <view style="width:100rpx;float:left;">
+            <image style="width: 100rpx; height: 100rpx;" src="{{item.avatarUrl}}"></image>
+            <view style="text-align:center;width:100rpx;">{{item.score}}</view>
+          </view>
+          <view style="width:550rpx;float:left;margin-left:35rpx;">
+            <view>{{item.content}}</view>
+            <view style="color: #B0B0B0;font-size:24rpx;">{{item.joined_date}}</view>
+          </view>
+        </view>
+    </view>
+
+    <!--底部-->
+    <view class="footer-box">
+        <view class="shop-cart-btn" bindtap="goShopCar">
+            <view style='position:absolute;bottom:10rpx;'> 收藏 </view>
+        </view>
+        <view class="join-shop-cart" bindtap="addShopCar">加入收藏</view>
+        <view class="now-buy" bindtap="goShopCar">我的收藏</view>
+   </view>
+
+</view>

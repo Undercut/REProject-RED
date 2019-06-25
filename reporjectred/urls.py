@@ -20,6 +20,7 @@ from reporjectred.settings import MEDIA_ROOT
 from users.views import IndexView, LoginView, LogoutView
 from personal.views import PersonalView, UserInfoView, UploadImageView, \
     PasswdChangeView
+from api.views_member import FaceView
 
 
 urlpatterns = [
@@ -38,4 +39,15 @@ urlpatterns = [
 
     url(r'^users/', include('users.urls', namespace='users')),
 
+    url(r'^member/', include('member.urls', namespace='member')),
+    url(r'^commodity/', include('commodity.urls', namespace='commodity')),
+
+    url(r'^recommendations/', include('recommendations.urls', namespace='recommendations')),
+    url(r'^comment/', include('apps.comment.urls', namespace='comment')),
+
+    url(r'^hotcommend/', include('hotcommend.urls', namespace='hotcommend')),
+
+    url(r'^api/face/$', FaceView.as_view(), name="face"),
+
+    url(r'^api/', include('api.urls', namespace='api')),
 ]
